@@ -24,11 +24,37 @@ jobs:
           grep -q 'class="skip-link"' site/index.html
           grep -q 'name="viewport"' site/index.html
           grep -q 'property="og:title"' site/index.html
+          grep -q 'property="og:image"' site/index.html
           grep -q 'name="twitter:card"' site/index.html
           test -f site/styles.css
+          test -f site/og-image.svg
+      - name: Case-study pages present and accessible
+        run: |
+          set -e
+          for slug in resilient-woocommerce enterprise-fse-publishing updateproof; do
+            page="site/case-studies/$slug.html"
+            test -f "$page"
+            grep -q '<html lang="en">' "$page"
+            grep -q '<title>' "$page"
+            grep -q 'class="skip-link"' "$page"
+            grep -q 'name="viewport"' "$page"
+            grep -q 'href="../index.html"' "$page"
+          done
       - name: Local asset references resolve
         run: |
-          # Every href/src that points at a local file must exist.
-          grep -oE '(href|src)="[^"#:]+\.(css|js|png|jpg|svg)"' site/index.html \
-            | sed -E 's/.*="([^"]+)"/\1/' \
-            | while read -r asset; do test -f "site/$asset" || { echo "Missing asset: $asset"; exit 1; }; done
+          # Every href/src pointing at a local file must exist, resolved
+          # relative to the referencing page so subfolder depth stays correct.
+          # Absolute URLs (http:, mailto:) carry a colon and are skipped by
+          # the character class; fragments are skipped by the '#' exclusion.
+          set -e
+          status=0
+          for html in $(find site -name '*.html'); do
+            dir=$(dirname "$html")
+            for asset in $(grep -oE '(href|src)="[^"#:]+\.(css|js|png|jpg|svg)"' "$html" | sed -E 's/.*="([^"]+)"/\1/'); do
+              if [ ! -f "$dir/$asset" ]; then
+                echo "Missing asset: $asset (referenced in $html)"
+                status=1
+              fi
+            done
+          done
+          exit $status

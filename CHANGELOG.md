@@ -12,3 +12,6 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Open Graph and Twitter Card metadata for rich link previews; CI smoke check now asserts they are present.
 - GitHub Pages deploy workflow (`.github/workflows/deploy.yml`) publishing `site/` on push to main, with least-privilege permissions.
 - CI smoke checks for a11y/SEO basics and local asset resolution.
+- Per-project case-study pages under `site/case-studies/` for the flagship work (Enterprise FSE Publishing, Resilient WooCommerce, UpdateProof): same accessible template as the home page (lang, skip link, landmarks, OG/Twitter meta), honest problem/approach/what-is-built/boundary content, links back to the home page and each repository.
+- On-brand `site/og-image.svg` (1200×630) referenced by absolute URL from every page's `og:image`/`twitter:image`; cards for the flagship case studies added to the home page.
+- CI smoke now asserts each case-study page exists and passes the same a11y/SEO greps, and resolves local asset references relative to each page so `case-studies/` subfolder depth stays correct.

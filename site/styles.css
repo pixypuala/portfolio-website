@@ -123,6 +123,21 @@ a:hover { color: var(--accent-strong); }
 .card a.stretched { text-decoration: none; color: inherit; }
 .card:focus-within { border-color: var(--accent); }
 
+/* Case-study article */
+.breadcrumb { color: var(--muted); font-size: 0.9rem; margin: 0 0 var(--space-2); text-transform: uppercase; letter-spacing: 0.04em; }
+.cs-meta {
+	display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3);
+	list-style: none; padding: 0; margin: var(--space-3) 0 0;
+	color: var(--muted); font-size: 0.9rem;
+}
+.cs-body { max-width: 62ch; }
+.cs-body h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); margin: var(--space-4) 0 var(--space-1); }
+.cs-body p { color: var(--muted); }
+.cs-body ul { margin: 0; padding-left: 1.2rem; }
+.cs-body li { color: var(--muted); margin-bottom: var(--space-1); }
+.cs-body a { color: var(--accent); }
+.cs-body a:hover { color: var(--accent-strong); }
+
 /* Footer */
 .site-footer { border-top: 1px solid var(--line); padding-block: var(--space-4); color: var(--muted); font-size: 0.9rem; }
 

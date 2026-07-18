@@ -16,14 +16,20 @@ python3 -m http.server --directory site 8000   # then visit http://localhost:800
   typography, a responsive project grid, visible focus rings, and `prefers-reduced-motion` support.
 - Content links to the five showcase projects and the extracted open-source tools, framed honestly
   as in-progress reference implementations (no fabricated metrics or testimonials).
-- CI smoke-checks accessibility/SEO basics and that every local asset reference resolves.
+- `site/case-studies/*.html` — per-project case studies for the flagship work (Enterprise FSE
+  Publishing, Resilient WooCommerce, UpdateProof): each states the problem, approach, what is built,
+  and the honest contribution boundary, reusing the same accessible template and shared styles.
+- `site/og-image.svg` — an on-brand 1200×630 Open Graph/Twitter share image, referenced by absolute
+  URL from every page's `og:image`/`twitter:image`.
+- CI smoke-checks accessibility/SEO basics on the home page and every case study, and that every
+  local asset reference resolves — including relative paths from the `case-studies/` subfolder.
 
 ## Documented boundary (not yet built)
 
-Per-project case-study pages and an OG **image** (Open Graph/Twitter text metadata
-ships now; the 1200×630 share image is still to be produced). The static-host deploy
-workflow is built: a GitHub Pages workflow (`.github/workflows/deploy.yml`) publishes
-`site/` on every push to `main`.
+A raster **PNG** export of `site/og-image.svg`. The on-brand SVG ships and is referenced now; a
+1200×630 PNG remains the one outstanding item because several link-preview scrapers favour raster
+over vector. The static-host deploy workflow is built: a GitHub Pages workflow
+(`.github/workflows/deploy.yml`) publishes `site/` on every push to `main`.
 
 ## Purpose
 
