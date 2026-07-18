@@ -1,0 +1,20 @@
+# Design Foundation — Portfolio Website
+
+- **Discipline (all aspects):** [`09-TEMPLATES/DESIGN-SYSTEM-CLAUDE.md`](../09-TEMPLATES/DESIGN-SYSTEM-CLAUDE.md) — surface pacing, scarce accent, 6-step type scale with negative tracking, editorial whitespace, hairline-over-shadow elevation.
+- **Palette + fonts (override):** [`09-TEMPLATES/DESIGN-TOKENS-WORDPRESS.md`](../09-TEMPLATES/DESIGN-TOKENS-WORDPRESS.md) — wordpress.com landing palette (Blueberry `#3858E9` on white) + WordPress system font stack.
+
+The marketing surface applies the system directly: white hero bands with large Recoleta/Fraunces serif display (400, negative tracking), blue primary CTAs, alternating gray feature cards and dark product-mockup/code-window cards, dark footer. Case-study cards reuse the feature-card role; the pre-footer CTA is a full-bleed **blue** band. Consume the tokens exported by Project 04.
+
+## Required accessibility extensions
+
+The tokens are the visual language only. This project MUST meet WCAG 2.2 AA:
+
+- Interactive targets ≥ **44×44px** (raise via padding).
+- Every interactive element has a **visible, theme-aware focus ring** (2px offset, `--focus-ring`).
+- Honor **prefers-reduced-motion** and **prefers-contrast**.
+- Verify blue-on-white, blue-on-blue, and muted pairings hit AA; darken where they fail.
+- All color via CSS variables / tokens — never inline hex.
+
+## Rule
+
+White canvas + one WordPress blue (`#3858E9`) + one dark product surface — no cream, no coral, no fourth tone. **Discipline** from Anthropic, **palette + type** from wordpress.com (Recoleta/Fraunces serif display + system-stack body + Space Mono, not Copernicus/StyreneB).
