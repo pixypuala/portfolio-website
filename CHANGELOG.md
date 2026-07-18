@@ -8,3 +8,5 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 - Repository scaffolding: governance files, docs, and CI skeleton.
+- Accessible, responsive, dependency-free static portfolio site (site/index.html + styles.css): skip link, landmarks, light/dark tokens, scroll-to-top, reduced-motion support.
+- CI smoke checks for a11y/SEO basics and local asset resolution.

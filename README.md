@@ -1,5 +1,27 @@
 # Personal Marketing System
 
+## Getting started
+
+A static, dependency-free site — no build step. Open `site/index.html` directly, or serve it:
+
+```bash
+python3 -m http.server --directory site 8000   # then visit http://localhost:8000
+```
+
+## What is built today
+
+- `site/index.html` — a semantic, accessible single-page portfolio: skip link, landmark regions,
+  keyboard-friendly navigation, and a progressively-enhanced scroll-to-top control.
+- `site/styles.css` — token-driven styling with WCAG-AA contrast in light and dark, fluid
+  typography, a responsive project grid, visible focus rings, and `prefers-reduced-motion` support.
+- Content links to the five showcase projects and the extracted open-source tools, framed honestly
+  as in-progress reference implementations (no fabricated metrics or testimonials).
+- CI smoke-checks accessibility/SEO basics and that every local asset reference resolves.
+
+## Documented boundary (not yet built)
+
+Per-project case-study pages, an OG image, and a static-host deploy workflow.
+
 ## Purpose
 
 The portfolio website and personal-marketing layer that turns the five projects and eight open-source repositories into an evidence-led career narrative. It leads with the problems solved, not a list of technologies, and every public claim links to reproducible proof.

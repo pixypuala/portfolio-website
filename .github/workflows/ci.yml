@@ -1,23 +1,32 @@
 name: CI
 
-# Runs static analysis and tests on every push and pull request.
-# Individual jobs are enabled per repo as the corresponding tooling lands.
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
 
-# Cancel superseded runs on the same ref to save CI minutes.
 concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  lint-and-test:
+  smoke:
+    name: Static site smoke checks
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Placeholder gate
-        # Replaced with real lint/test steps as each repo's tooling is added.
-        run: echo "CI scaffold present; per-repo steps are added during implementation."
+      - name: Required accessibility/SEO basics present
+        run: |
+          set -e
+          grep -q '<html lang="en">' site/index.html
+          grep -q '<title>' site/index.html
+          grep -q 'class="skip-link"' site/index.html
+          grep -q 'name="viewport"' site/index.html
+          test -f site/styles.css
+      - name: Local asset references resolve
+        run: |
+          # Every href/src that points at a local file must exist.
+          grep -oE '(href|src)="[^"#:]+\.(css|js|png|jpg|svg)"' site/index.html \
+            | sed -E 's/.*="([^"]+)"/\1/' \
+            | while read -r asset; do test -f "site/$asset" || { echo "Missing asset: $asset"; exit 1; }; done

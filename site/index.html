@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Pixypuala — WordPress & frontend engineering portfolio</title>
+	<meta name="description" content="Reference implementations demonstrating senior WordPress, Gutenberg, WooCommerce, headless, accessibility, and release-engineering work.">
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<a class="skip-link" href="#main">Skip to content</a>
+
+	<header class="site-header">
+		<div class="wrap">
+			<a class="brand" href="#top">Pixypuala</a>
+			<nav class="site-nav" aria-label="Primary">
+				<a href="#work">Work</a>
+				<a href="#about">About</a>
+				<a href="#contact">Contact</a>
+			</nav>
+		</div>
+	</header>
+
+	<main id="main">
+		<section class="hero" id="top">
+			<div class="wrap">
+				<h1>Engineering that proves itself, not just ships.</h1>
+				<p>Reference implementations across WordPress FSE, WooCommerce resilience, headless delivery, accessibility, and release assurance — each with tests, CI, and honest documentation.</p>
+			</div>
+		</section>
+
+		<section class="section" id="work">
+			<div class="wrap">
+				<h2>Selected work</h2>
+				<p class="lead">Five showcase projects and the open-source tools extracted from them. Every project is a runnable, tested reference — in active development, with each claim tied to evidence.</p>
+
+				<ul class="grid" role="list">
+					<li class="card">
+						<span class="tag">WordPress · FSE</span>
+						<h3><a class="stretched" href="https://github.com/pixypuala/enterprise-fse-publishing-platform">Enterprise FSE Publishing Platform</a></h3>
+						<p>Governed content models and capabilities in a plugin; a swappable Full Site Editing block theme for presentation. Tested domain policy.</p>
+					</li>
+					<li class="card">
+						<span class="tag">WooCommerce</span>
+						<h3><a class="stretched" href="https://github.com/pixypuala/resilient-woocommerce-commerce-system">Resilient WooCommerce Commerce System</a></h3>
+						<p>Replay-safe, idempotent webhook inbox and oversell-safe stock reservations — the workflows that protect revenue.</p>
+					</li>
+					<li class="card">
+						<span class="tag">Headless · API</span>
+						<h3><a class="stretched" href="https://github.com/pixypuala/hybrid-wordpress-content-delivery-platform">Hybrid Content Delivery Platform</a></h3>
+						<p>Versioned content contracts that give headless consumers a stable API surface decoupled from WordPress internals.</p>
+					</li>
+					<li class="card">
+						<span class="tag">Accessibility · TS</span>
+						<h3><a class="stretched" href="https://github.com/pixypuala/accessible-frontend-design-system-lab">Accessible Frontend Design System Lab</a></h3>
+						<p>WAI-ARIA UI patterns and WCAG-AA design tokens, verified with axe and keyboard tests.</p>
+					</li>
+					<li class="card">
+						<span class="tag">Testing · CI</span>
+						<h3><a class="stretched" href="https://github.com/pixypuala/updateproof">UpdateProof</a></h3>
+						<p>Contract-driven WordPress compatibility and release-assurance engine with deterministic exit codes.</p>
+					</li>
+					<li class="card">
+						<span class="tag">Open source</span>
+						<h3><a class="stretched" href="https://github.com/pixypuala?tab=repositories">Extracted tools</a></h3>
+						<p>Content contracts, an integration-test kit, a capability auditor, a performance-budget action, Playground blueprints, and pattern libraries.</p>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="section" id="about">
+			<div class="wrap">
+				<h2>About</h2>
+				<p class="lead">I build WordPress and frontend systems the way senior teams expect: correct, accessible, tested, and maintainable. These projects show the reasoning behind each decision, how the system behaves when something fails, and how the work is verified — not just how it looks.</p>
+			</div>
+		</section>
+
+		<section class="section" id="contact">
+			<div class="wrap">
+				<h2>Contact</h2>
+				<p class="lead">Reviewing for senior WordPress, Gutenberg, WooCommerce, or platform work? Reach me at <a href="mailto:pixpuala@gmail.com">pixpuala@gmail.com</a> or browse the source on <a href="https://github.com/pixypuala">GitHub</a>.</p>
+			</div>
+		</section>
+	</main>
+
+	<footer class="site-footer">
+		<div class="wrap">
+			<p>© 2026 Pixypuala. Built as a static, accessible, dependency-free site. Source available on GitHub.</p>
+		</div>
+	</footer>
+
+	<button id="to-top" type="button" aria-label="Scroll back to top" hidden>↑</button>
+
+	<script>
+		// Progressive enhancement: reveal the scroll-to-top control past 600px and
+		// hide it near the top. No dependencies; respects the user's scroll.
+		(function () {
+			var btn = document.getElementById('to-top');
+			if (!btn) { return; }
+			btn.hidden = false;
+			function update() {
+				if (window.scrollY > 600) { btn.classList.add('is-visible'); }
+				else if (window.scrollY < 200) { btn.classList.remove('is-visible'); }
+			}
+			window.addEventListener('scroll', update, { passive: true });
+			btn.addEventListener('click', function () {
+				window.scrollTo({ top: 0, behavior: 'smooth' });
+			});
+			update();
+		})();
+	</script>
+</body>
+</html>
