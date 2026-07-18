@@ -23,6 +23,8 @@ jobs:
           grep -q '<title>' site/index.html
           grep -q 'class="skip-link"' site/index.html
           grep -q 'name="viewport"' site/index.html
+          grep -q 'property="og:title"' site/index.html
+          grep -q 'name="twitter:card"' site/index.html
           test -f site/styles.css
       - name: Local asset references resolve
         run: |

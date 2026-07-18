@@ -20,7 +20,10 @@ python3 -m http.server --directory site 8000   # then visit http://localhost:800
 
 ## Documented boundary (not yet built)
 
-Per-project case-study pages, an OG image, and a static-host deploy workflow.
+Per-project case-study pages and an OG **image** (Open Graph/Twitter text metadata
+ships now; the 1200×630 share image is still to be produced). The static-host deploy
+workflow is built: a GitHub Pages workflow (`.github/workflows/deploy.yml`) publishes
+`site/` on every push to `main`.
 
 ## Purpose
 
