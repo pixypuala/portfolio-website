@@ -7,6 +7,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [Unreleased]
 
 ### Added
+- Raster `site/og-image.png` (1200x630, rendered from the source SVG); every page's og:image/twitter:image now points at it, and CI asserts its existence and exact dimensions.
 - Repository scaffolding: governance files, docs, and CI skeleton.
 - Accessible, responsive, dependency-free static portfolio site (site/index.html + styles.css): skip link, landmarks, light/dark tokens, scroll-to-top, reduced-motion support.
 - Open Graph and Twitter Card metadata for rich link previews; CI smoke check now asserts they are present.

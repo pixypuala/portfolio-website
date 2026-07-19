@@ -28,6 +28,9 @@ jobs:
           grep -q 'name="twitter:card"' site/index.html
           test -f site/styles.css
           test -f site/og-image.svg
+          test -f site/og-image.png
+          # og-image.png must be a real 1200x630 PNG (raster share image scrapers prefer).
+          python3 -c "import struct,sys; d=open('site/og-image.png','rb').read(); assert d[:8]==b'\x89PNG\r\n\x1a\n', 'not a PNG'; w,h=struct.unpack('>II', d[16:24]); print('og-image.png', w, 'x', h); sys.exit(0 if (w,h)==(1200,630) else 1)"
       - name: Case-study pages present and accessible
         run: |
           set -e

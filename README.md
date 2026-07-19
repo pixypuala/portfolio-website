@@ -24,12 +24,15 @@ python3 -m http.server --directory site 8000   # then visit http://localhost:800
 - CI smoke-checks accessibility/SEO basics on the home page and every case study, and that every
   local asset reference resolves — including relative paths from the `case-studies/` subfolder.
 
-## Documented boundary (not yet built)
+## What ships now
 
-A raster **PNG** export of `site/og-image.svg`. The on-brand SVG ships and is referenced now; a
-1200×630 PNG remains the one outstanding item because several link-preview scrapers favour raster
-over vector. The static-host deploy workflow is built: a GitHub Pages workflow
-(`.github/workflows/deploy.yml`) publishes `site/` on every push to `main`.
+The raster **`site/og-image.png`** (1200×630, rendered from the source `og-image.svg`) ships and is
+what every page's `og:image`/`twitter:image` now references — scrapers that favour raster over vector
+get a real PNG. CI asserts the PNG exists and is exactly 1200×630. The static-host deploy is a GitHub
+Pages workflow (`.github/workflows/deploy.yml`) publishing `site/` on every push to `main`, and
+per-project case studies live under `site/case-studies/`.
+
+Nothing outstanding remains for this repo beyond ongoing content.
 
 ## Purpose
 
